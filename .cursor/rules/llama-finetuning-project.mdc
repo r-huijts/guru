@@ -1,0 +1,45 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Llama 3.2 Fine-tuning Project Guide
+
+## Project Overview
+This project fine-tunes Llama 3.2 using Unsloth for spiritual wisdom instruction following. The main components are:
+
+- **Dataset**: [datasets/llama_optimized.jsonl](mdc:datasets/llama_optimized.jsonl) - 521 spiritual wisdom entries in instruction-input-output format
+- **Plan**: [unsloth_llama_finetuning_plan.md](mdc:unsloth_llama_finetuning_plan.md) - Complete implementation roadmap
+- **Generator**: [generate_finetuning_dataset.py](mdc:generate_finetuning_dataset.py) - Dataset preparation script
+- **Dependencies**: [requirements.txt](mdc:requirements.txt) - Python package requirements
+
+## Target Model
+- **Primary**: `unsloth/Llama-3.2-3B-Instruct` (6GB VRAM)
+- **Alternative**: `unsloth/Llama-3.2-1B-Instruct` (memory constrained)
+
+## Key Configuration
+- **LoRA Rank**: 16 (conservative start)
+- **Batch Size**: 2 with 4 gradient accumulation steps
+- **Learning Rate**: 2e-4
+- **Max Steps**: 500 (~3 epochs for 521 samples)
+- **Target Modules**: q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj
+
+## Dataset Format
+Each entry in [datasets/llama_optimized.jsonl](mdc:datasets/llama_optimized.jsonl) follows:
+```json
+{"instruction": "question", "input": "", "output": "wisdom_response"}
+```
+
+## Implementation Workflow
+1. Follow setup instructions in [unsloth_llama_finetuning_plan.md](mdc:unsloth_llama_finetuning_plan.md)
+2. Use Unsloth's FastLanguageModel for 2x training speedup
+3. Apply QLoRA (4-bit quantization) for memory efficiency
+4. Monitor training loss (target: < 1.0)
+5. Evaluate with spiritual wisdom test questions
+
+## Success Criteria
+- Coherent spiritual wisdom responses
+- Philosophical depth and clarity
+- Consistent teaching style
+- Contextually relevant answers
+- No overfitting (loss plateau)

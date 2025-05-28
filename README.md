@@ -1,167 +1,167 @@
-# 🦙 Guru LLAMA Fine-Tuning Dataset Generator
+# 🧘‍♂️ Spiritual Wisdom AI Fine-tuning Project
 
-A powerful Python tool for converting speech transcripts into high-quality training datasets optimized for LLAMA instruction-following models. Perfect for creating AI models that can answer questions and share wisdom in a specific speaker's authentic voice.
+Transform ancient wisdom into modern AI guidance using **Unsloth + Llama 3.2** for lightning-fast fine-tuning!
 
-## 🎯 Features
+## 🌟 What This Project Does
 
-- **Smart Text Processing**: Handles both paragraph-formatted and single-line transcript files
-- **Multiple Output Formats**: Alpaca, ChatML, Q&A, and optimized LLAMA formats
-- **Quality Filtering**: Intelligent filtering to ensure high-quality training examples
-- **Q&A Extraction**: Automatically extracts question-answer pairs from natural speech
-- **RunPod Optimized**: Includes specific recommendations for RunPod fine-tuning
+This project fine-tunes **Llama 3.2** to become a wise spiritual teacher that can:
 
-## 📊 Dataset Statistics
+- 🧠 Answer deep philosophical and spiritual questions
+- 🧘‍♀️ Provide meditation guidance and mindfulness advice  
+- 💡 Share insights on consciousness, life purpose, and personal growth
+- 🌱 Offer wisdom from various spiritual traditions
+- 🤝 Maintain a compassionate, non-judgmental teaching style
 
-From 11 speech transcript files (~134KB total), the generator produces:
-- **520 total training examples**
-- **414 high-quality text segments**
-- **95 extracted Q&A pairs**
-- **Multiple format options** for different model architectures
+## 🚀 Quick Start (5 Minutes)
 
-## 🚀 Quick Start
-
-### Installation
-
+### 1. Setup Environment
 ```bash
-git clone https://github.com/r-huijts/guru-llama-finetuning.git
-cd guru-llama-finetuning
-pip install -r requirements.txt
+# Clone and enter the project
+cd guru
+
+# Run automated setup (installs everything!)
+python3 setup_environment.py
 ```
 
-### Usage
+### 2. Start Fine-tuning
+```bash
+# Begin training your AI spiritual teacher
+python3 finetune_llama_unsloth.py
+```
 
-1. **Add your transcript files** to the `data/` directory (`.txt` format)
-2. **Run the generator**:
-   ```bash
-   python generate_finetuning_dataset.py
-   ```
-3. **Find your datasets** in the `datasets/` directory
+**That's it!** 🎉 Your AI will start learning from 520+ spiritual wisdom examples.
 
-### Recommended File for LLAMA Fine-tuning
-Use `datasets/llama_optimized.jsonl` - it's specifically optimized for LLAMA instruction-following with:
-- Enhanced instruction templates
-- Authentic voice preservation  
-- Optimal segment granularity
-- Mixed training example types
+## 📊 Project Highlights
+
+- **🚀 2x Faster Training**: Powered by Unsloth optimizations
+- **💾 Memory Efficient**: 4-bit quantization + QLoRA
+- **📚 Rich Dataset**: 520 carefully curated spiritual wisdom entries
+- **🎯 Production Ready**: Complete pipeline from training to inference
+- **🔧 Highly Configurable**: Easy to customize and extend
+
+## 🎯 Technical Specifications
+
+| Component | Details |
+|-----------|---------|
+| **Model** | `unsloth/Llama-3.2-3B-Instruct` (optimized) |
+| **Dataset** | 520 spiritual wisdom Q&A pairs |
+| **Training** | QLoRA with rank-16, 3 epochs |
+| **Memory** | 6-8GB VRAM (3B model) or 4-5GB (1B model) |
+| **Time** | ~2-3 hours on RTX 4070 |
+| **Output** | Fine-tuned model ready for spiritual guidance |
 
 ## 📁 Project Structure
 
 ```
-guru-llama-finetuning/
-├── data/                          # Input transcript files (.txt)
-├── datasets/                      # Generated training datasets
-│   ├── llama_optimized.jsonl     # 🌟 RECOMMENDED for LLAMA
-│   ├── alpaca_format.jsonl       # Standard Alpaca format
-│   ├── qa_alpaca_format.jsonl    # Q&A in Alpaca format
-│   ├── conversation_format.jsonl # ChatML style
-│   ├── qa_format.json           # Pure Q&A pairs
-│   └── dataset_summary.json     # Detailed statistics & tips
-├── generate_finetuning_dataset.py # Main script
-├── requirements.txt              # Dependencies
-└── README.md                    # This file
+guru/
+├── 🚀 finetune_llama_unsloth.py    # Main training script
+├── 🛠️ setup_environment.py         # Automated environment setup
+├── 🧪 test_dataset.py              # Dataset verification
+├── 📊 datasets/
+│   ├── llama_optimized.jsonl       # 520 spiritual wisdom examples
+│   ├── alpaca_format.jsonl         # Alternative format
+│   └── conversation_format.jsonl   # Chat format
+├── 🤖 models/                      # Trained models (created during training)
+├── 📝 logs/                        # Training logs
+├── 📋 requirements.txt             # All dependencies
+├── 📖 QUICK_START.md              # Detailed setup guide
+└── 🗺️ unsloth_llama_finetuning_plan.md  # Complete implementation plan
 ```
 
-## 🎯 Output Formats
+## 🔧 Advanced Usage
 
-### LLAMA Optimized (Recommended)
-```json
-{
-  "instruction": "What is your understanding of consciousness?",
-  "input": "",
-  "output": "Consciousness is the very basis of all physical existence..."
-}
+### Custom Model Selection
+```bash
+# Use smaller model for limited VRAM
+python3 finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct
+
+# Custom output directory
+python3 finetune_llama_unsloth.py --output models/my-spiritual-guru
 ```
 
-### Q&A Format
-```json
-{
-  "question": "How does one develop true understanding?",
-  "answer": "True understanding comes when you stop identifying with...",
-  "source": "speech_transcript"
-}
+### Testing and Evaluation
+```bash
+# Test dataset format
+python3 test_dataset.py
+
+# Test existing model
+python3 finetune_llama_unsloth.py --test-only
 ```
 
-## 🔧 RunPod Fine-Tuning Tips
+### Monitoring Training
+```bash
+# Watch training progress
+tail -f training.log
 
-The generator includes specific recommendations for RunPod LLAMA fine-tuning:
-
-- **Learning Rate**: 1e-5 to 3e-5 (start conservative)
-- **Batch Size**: 4-8 depending on GPU memory
-- **Epochs**: 3-5 (monitor for overfitting)
-- **Method**: LoRA recommended (rank 16-64)
-- **GPU**: RTX 4090 24GB works perfectly
-- **Template**: Use Axolotl Jupyter Lab template
-
-## 📈 Quality Features
-
-### Smart Text Processing
-- **Single-line detection**: Automatically handles both formatted and unformatted transcripts
-- **Repetition cleanup**: Removes transcription artifacts and repetitive content
-- **Topic segmentation**: Creates coherent, focused training examples
-
-### Enhanced Q&A Extraction
-- **Natural speech patterns**: Extracts Q&A from conversational flow
-- **Teaching moments**: Identifies rhetorical questions and explanations
-- **Quality filtering**: Ensures meaningful, complete question-answer pairs
-
-### Instruction Optimization
-- **Spiritual/philosophical focus**: Templates designed for wisdom-sharing content
-- **Authentic voice**: Preserves the speaker's unique teaching style
-- **Diverse prompts**: Multiple instruction styles for robust training
-
-## 🛠️ Customization
-
-### Adding New Transcript Files
-Simply add `.txt` files to the `data/` directory. The script handles:
-- Single-line format (entire transcript in one line)
-- Paragraph format (properly formatted with line breaks)
-- Mixed formats in the same dataset
-
-### Adjusting Quality Filters
-Modify the `is_quality_segment()` method in `generate_finetuning_dataset.py`:
-- **Minimum words**: Currently 15 (adjustable)
-- **Maximum words**: Currently 150 (adjustable)
-- **Meaningful content**: Keyword-based filtering
-- **Uniqueness**: Repetition detection
-
-### Custom Instruction Templates
-Add your own instruction templates in `generate_instruction_response_pairs()`:
-```python
-custom_templates = [
-    "Your custom instruction template for {}",
-    "Another template asking about {}",
-]
+# Monitor GPU usage
+watch -n 1 nvidia-smi
 ```
 
-## 📊 Dataset Quality Metrics
+## 📈 Expected Results
 
-The generator provides detailed statistics in `dataset_summary.json`:
-- Total segments processed
-- Q&A pairs extracted
-- Format-specific example counts
-- Quality filtering results
-- RunPod-specific recommendations
+After training, your AI spiritual teacher will respond like this:
+
+**Question**: "What is the nature of consciousness?"
+
+**AI Response**: "Consciousness is the fundamental awareness that underlies all experience. It is not something you have, but something you are. Like the sky that remains unchanged whether clouds pass through it or not, consciousness is the unchanging backdrop against which all thoughts, emotions, and sensations arise and pass away. To understand consciousness, you must first recognize that you are not your thoughts, but the awareness that observes them..."
+
+## 🛠️ System Requirements
+
+### Minimum Requirements
+- **Python 3.8+** (Python 3.10+ recommended)
+- **4GB VRAM** (for 1B model)
+- **8GB System RAM**
+- **CUDA-compatible GPU**
+
+### Recommended Setup
+- **6GB+ VRAM** (RTX 3080/4070+ for 3B model)
+- **16GB+ System RAM**
+- **Fast SSD** for dataset loading
+- **CUDA 12.1+**
+
+## 🎓 Learning Resources
+
+- **📖 [Quick Start Guide](QUICK_START.md)** - Step-by-step setup
+- **🗺️ [Implementation Plan](unsloth_llama_finetuning_plan.md)** - Technical details
+- **🔗 [Unsloth Documentation](https://github.com/unslothai/unsloth)** - Framework docs
+- **🤗 [Model Repository](https://huggingface.co/unsloth/Llama-3.2-3B-Instruct)** - Pre-optimized model
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions! Here's how you can help:
 
-## 📝 License
+1. **🔍 Improve Dataset**: Add more spiritual wisdom examples
+2. **⚡ Optimize Training**: Experiment with hyperparameters
+3. **🧪 Add Tests**: Create evaluation benchmarks
+4. **📚 Documentation**: Improve guides and examples
+5. **🐛 Bug Reports**: Report issues and suggest fixes
 
-This project is open source and available under the [MIT License](LICENSE).
+## 📜 License
+
+This project is open source and available under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- Optimized for spiritual/philosophical content fine-tuning
-- Designed for RunPod cloud GPU training
-- Built with LLAMA instruction-following in mind
+- **Unsloth Team** for the incredible optimization framework
+- **Meta AI** for the Llama 3.2 foundation model
+- **Hugging Face** for the transformers ecosystem
+- **Spiritual Teachers** whose wisdom forms our dataset
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+This AI is designed to:
+- **Guide** rather than dictate
+- **Inspire** contemplation and self-discovery
+- **Respect** diverse spiritual paths and beliefs
+- **Encourage** inner exploration and growth
+- **Share** timeless wisdom with modern accessibility
 
 ---
 
-**Ready to create your own wisdom-sharing AI model?** 🚀
+**Ready to create your AI spiritual teacher?** 
 
-Start by adding your transcript files to the `data/` directory and running the generator! 
+Start with: `python3 setup_environment.py` 🌟
+
+*May this AI bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 

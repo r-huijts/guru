@@ -1,7 +1,42 @@
-# Requirements for Fine-Tuning Dataset Generator
-# No external dependencies needed - uses only Python standard library!
+# 🚀 Unsloth + Llama 3.2 Fine-tuning Requirements
+# ================================================
 
-# Optional: For enhanced text processing (uncomment if needed)
-# nltk>=3.8
-# spacy>=3.4.0
-# transformers>=4.20.0 
+# Core Unsloth and ML dependencies
+unsloth[colab-new]>=2024.1
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# Transformers and training libraries
+transformers>=4.36.0
+datasets>=2.14.0
+peft>=0.7.0
+trl>=0.7.0
+accelerate>=0.24.0
+
+# Additional ML utilities
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Tokenization and text processing
+tokenizers>=0.15.0
+sentencepiece>=0.1.99
+
+# Monitoring and logging
+wandb>=0.16.0  # Optional: for experiment tracking
+tensorboard>=2.15.0  # Optional: for training visualization
+
+# Development and utilities
+jupyter>=1.0.0  # Optional: for notebook development
+matplotlib>=3.7.0  # Optional: for plotting
+seaborn>=0.12.0  # Optional: for visualization
+
+# Memory optimization
+bitsandbytes>=0.41.0  # For 8-bit optimization
+
+# CUDA support (automatically installed with torch)
+# --index-url https://download.pytorch.org/whl/cu121
+
+# Note: Install with CUDA support using:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 
