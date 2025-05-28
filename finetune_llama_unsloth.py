@@ -19,6 +19,7 @@ from typing import Dict, List, Optional
 import argparse
 from datetime import datetime
 import logging
+import re
 
 # Configure logging
 logging.basicConfig(
@@ -609,6 +610,15 @@ class SpiritualWisdomTrainer:
                 # Clean up any remaining artifacts
                 if response.startswith("user"):
                     response = response.split("assistant", 1)[-1].strip()
+                
+                # Remove any remaining header artifacts
+                response = response.replace("user", "").replace("assistant", "").strip()
+                
+                # Clean up multiple newlines and spaces
+                response = re.sub(r'\n\s*\n', '\n\n', response)  # Normalize paragraph breaks
+                response = re.sub(r'^\s+', '', response, flags=re.MULTILINE)  # Remove leading spaces
+                response = response.strip()
+                
             else:
                 response = full_response
             
@@ -618,7 +628,7 @@ class SpiritualWisdomTrainer:
     
     def run_full_pipeline(self):
         """Execute the complete fine-tuning pipeline."""
-        logger.info("�� Starting Spiritual Wisdom Fine-tuning Pipeline")
+        logger.info("🚀 Starting Spiritual Wisdom Fine-tuning Pipeline")
         logger.info("=" * 60)
         
         try:

@@ -1,0 +1,35 @@
+{
+  "training_summary": {
+    "total_evaluation_steps": 7,
+    "training_duration_minutes": 4.5,
+    "final_step": 175
+  },
+  "loss_metrics": {
+    "initial_eval_loss": 3.294,
+    "final_eval_loss": 2.236,
+    "best_eval_loss": 2.236,
+    "total_improvement": 1.0579999999999998,
+    "improvement_percentage": 32.11900425015178,
+    "convergence_step": 150
+  },
+  "quality_assessment": {
+    "learning_stability": -0.2716104832654467,
+    "convergence_speed": 0.7142857142857143,
+    "overall_grade": "C (Needs Improvement)",
+    "training_efficiency": "Excellent"
+  },
+  "model_responses": {
+    "sample_responses": [
+      {
+        "question": "What is the nature of consciousness?",
+        "response": "Consciousness is the fundamental awareness that underlies all experience...",
+        "quality": "Good - Uses spiritual terminology and concepts"
+      },
+      {
+        "question": "How can I find inner peace?",
+        "response": "Inner peace comes from understanding the nature of mind...",
+        "quality": "Good - Provides practical guidance"
+      }
+    ]
+  }
+}
