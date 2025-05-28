@@ -1,3 +1,18 @@
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Training outputs
+models/
+logs/
+checkpoints/
+training.log
+
+# Activation scripts (auto-generated)
+activate_venv.sh
+activate_venv.bat
+
 # Python
 __pycache__/
 *.py[cod]
@@ -21,7 +36,19 @@ wheels/
 *.egg
 MANIFEST
 
-# Virtual environments
+# PyTorch
+*.pth
+*.pt
+*.bin
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environment variables
 .env
 .venv
 env/
@@ -46,6 +73,16 @@ venv.bak/
 ehthumbs.db
 Thumbs.db
 
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Model downloads (large files)
+*.safetensors
+*.gguf
+*.ggml
+
 # Data files (keep private)
 data/*.txt
 data/*.json
@@ -58,18 +95,11 @@ datasets/*.json
 # Logs
 *.log
 
-# Temporary files
-*.tmp
-*.temp
-
 # Model files (too large)
 *.bin
 *.safetensors
 *.pt
 *.pth
-
-# Jupyter
-.ipynb_checkpoints/
 
 # Keep directory structure but ignore contents
 !data/.gitkeep

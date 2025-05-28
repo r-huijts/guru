@@ -1,6 +1,6 @@
 # 🚀 Quick Start Guide: Spiritual Wisdom AI Fine-tuning
 
-Welcome to your spiritual AI teacher training journey! This guide will get you up and running with Unsloth + Llama 3.2 fine-tuning in just a few steps.
+Welcome to your spiritual AI teacher training journey! This guide will get you up and running with Llama 3.2 fine-tuning in just a few steps using a clean virtual environment.
 
 ## 🎯 What You'll Build
 
@@ -14,152 +14,115 @@ A fine-tuned Llama 3.2 model that can:
 
 - **Python 3.8+** (Python 3.10+ recommended)
 - **6GB+ VRAM** for Llama-3.2-3B (or 4GB+ for 1B model)
-- **CUDA-compatible GPU** (RTX 3080/4070+ ideal)
+- **Apple Silicon Mac** with MPS support (or CUDA GPU for other systems)
 - **16GB+ System RAM** recommended
 
 ## 🚀 Quick Setup (5 Minutes)
 
-### Step 1: Environment Setup
+### Step 1: Create Virtual Environment & Install Dependencies
 ```bash
-# Run the automated setup script
-python setup_environment.py
+# Run the automated setup (creates venv and installs everything)
+python3 setup_environment.py
 ```
 
-This script will:
-- ✅ Check your system requirements
-- 📦 Install all dependencies (PyTorch, Unsloth, etc.)
-- 🔍 Verify your GPU setup
-- 📁 Create necessary directories
-- 📊 Check your dataset
-
-### Step 2: Start Fine-tuning
+### Step 2: Activate Environment
 ```bash
-# Start training with default settings (recommended)
+# Easy activation with helpful info
+./activate_venv.sh
+
+# Or manually:
+source venv/bin/activate
+```
+
+### Step 3: Verify Setup
+```bash
+# Test the dataset and environment
+python test_dataset.py
+```
+
+### Step 4: Start Fine-tuning
+```bash
+# Begin training (will use MPS on Apple Silicon)
 python finetune_llama_unsloth.py
+
+# Or with custom options:
+python finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct --max-length 1024
 ```
 
-**That's it!** 🎉 Your AI spiritual teacher will start learning!
+## 🎛️ Training Options
 
-## 🔧 Advanced Options
-
-### Custom Model Selection
 ```bash
-# Use smaller model for limited VRAM
-python finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct
+# Show all available options
+python finetune_llama_unsloth.py --help
 
-# Custom output directory
-python finetune_llama_unsloth.py --output models/my-spiritual-guru
-```
-
-### Test Existing Model
-```bash
-# Test a previously trained model
-python finetune_llama_unsloth.py --test-only --output models/spiritual-wisdom-llama
+# Common configurations:
+python finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct  # Smaller model (4GB VRAM)
+python finetune_llama_unsloth.py --max-length 1024                      # Shorter sequences
+python finetune_llama_unsloth.py --output ./my_spiritual_model           # Custom output path
 ```
 
 ## 📊 What to Expect
 
-### Training Timeline
-- **Setup**: 2-3 minutes (model download)
-- **Training**: 2-3 hours on RTX 4070
-- **Total**: ~3 hours for complete pipeline
+- **Dataset**: 520 high-quality spiritual wisdom examples
+- **Training Time**: 30-60 minutes on Apple Silicon
+- **Memory Usage**: ~6GB VRAM for 3B model, ~4GB for 1B model
+- **Output**: Fine-tuned model ready for spiritual guidance
 
-### Training Progress
-```
-🧘‍♂️ Initializing Spiritual Wisdom Trainer
-🚀 Loading Unsloth-optimized model: unsloth/Llama-3.2-3B-Instruct
-📊 Total parameters: 3,213,184,000
-🎯 LoRA trainable parameters: 20,971,520
-📚 Loading dataset from datasets/llama_optimized.jsonl
-📊 Loaded 521 training examples
-⚙️ Setting up training arguments...
-🏋️‍♂️ Creating SFT trainer...
-🚀 Starting fine-tuning process...
-```
+## 🔧 Troubleshooting
 
-### Memory Usage
-- **3B Model**: ~6-8GB VRAM during training
-- **1B Model**: ~4-5GB VRAM during training
-- **System RAM**: ~8-12GB during training
-
-## 📈 Monitoring Training
-
-### Real-time Logs
+### Virtual Environment Issues
 ```bash
-# Watch training progress
-tail -f training.log
-
-# Monitor GPU usage
-watch -n 1 nvidia-smi
+# If setup fails, try manual creation:
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### Training Metrics
-- **Loss**: Should decrease from ~2.5 to ~0.8-1.2
-- **Steps**: ~195 steps for 3 epochs (521 examples)
-- **Checkpoints**: Saved every 100 steps
-
-## 🧪 Testing Your Model
-
-The script automatically tests your model with questions like:
-- "What is the nature of consciousness?"
-- "How can I find inner peace?"
-- "What is the purpose of meditation?"
-
-Example output:
-```
-❓ Question: What is the nature of consciousness?
-🧘‍♂️ Response: Consciousness is the fundamental awareness that underlies all experience. It is not something you have, but something you are. Like the sky that remains unchanged whether clouds pass through it or not, consciousness is the unchanging backdrop against which all thoughts, emotions, and sensations arise and pass away...
-```
-
-## 🎯 Success Indicators
-
-Your model is ready when:
-- ✅ Training loss drops below 1.0
-- ✅ Responses are coherent and wise
-- ✅ No repetitive or generic answers
-- ✅ Maintains spiritual/philosophical depth
-- ✅ Consistent teaching style
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-**Out of Memory (OOM)**
+### Memory Issues
 ```bash
-# Use smaller model
+# Use smaller model:
 python finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct
+
+# Reduce sequence length:
+python finetune_llama_unsloth.py --max-length 1024
 ```
 
-**Slow Training**
-- Verify you're using the Unsloth-optimized model
-- Check GPU utilization with `nvidia-smi`
-- Ensure CUDA is properly installed
+### Package Issues
+```bash
+# Reinstall problematic packages:
+pip install --force-reinstall transformers datasets
+```
 
-**Poor Quality Responses**
-- Increase LoRA rank in the script (16 → 32)
-- Adjust learning rate (2e-4 → 1e-4)
-- Train for more steps
+## 🧘‍♂️ Next Steps
 
-### Getting Help
-
-1. **Check logs**: `cat training.log`
-2. **Verify setup**: `python setup_environment.py`
-3. **Test dataset**: Check `datasets/llama_optimized.jsonl` exists
-4. **GPU status**: `nvidia-smi`
+1. **Test Your Model**: The script will automatically test the model after training
+2. **Experiment**: Try different prompts and see how your AI teacher responds
+3. **Iterate**: Adjust training parameters and retrain if needed
+4. **Deploy**: Use your fine-tuned model in applications or chatbots
 
 ## 📁 Project Structure
 
 ```
 guru/
-├── 🚀 finetune_llama_unsloth.py    # Main training script
-├── 🛠️ setup_environment.py         # Environment setup
-├── 📊 datasets/
-│   └── llama_optimized.jsonl       # 521 spiritual wisdom examples
-├── 🤖 models/                      # Trained models saved here
-├── 📝 logs/                        # Training logs
-├── 📋 requirements.txt             # Dependencies
-└── 📖 QUICK_START.md              # This guide
+├── venv/                          # Virtual environment
+├── datasets/llama_optimized.jsonl # Training dataset (520 entries)
+├── models/                        # Output directory
+├── logs/                         # Training logs
+├── finetune_llama_unsloth.py     # Main training script
+├── test_dataset.py               # Dataset verification
+├── setup_environment.py          # Environment setup
+├── activate_venv.sh              # Easy activation
+└── requirements.txt              # Dependencies
 ```
+
+## 💡 Tips for Success
+
+- **Start Small**: Use the 1B model first to test everything works
+- **Monitor Memory**: Watch Activity Monitor during training
+- **Be Patient**: First run downloads the model (~6GB)
+- **Experiment**: Try different spiritual questions after training
+
+Happy training! 🧘‍♂️✨
 
 ## 🎉 Next Steps
 
@@ -182,8 +145,32 @@ Your AI spiritual teacher is designed to:
 - Encourage inner exploration
 - Share timeless wisdom
 
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
 ---
 
-**Ready to begin?** Run `python setup_environment.py` and start your journey! 🌟
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
 
 *May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 

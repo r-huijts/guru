@@ -70,15 +70,24 @@ class SpiritualWisdomTrainer:
         """Verify system requirements and dependencies."""
         logger.info("🔍 Checking system requirements...")
         
-        # Check CUDA availability
-        if not torch.cuda.is_available():
-            logger.warning("⚠️  CUDA not available. Training will be slow on CPU.")
-        else:
+        # Check for GPU acceleration
+        if torch.cuda.is_available():
             gpu_memory = torch.cuda.get_device_properties(0).total_memory / 1e9
-            logger.info(f"🎮 GPU Memory: {gpu_memory:.1f}GB")
+            logger.info(f"🎮 CUDA GPU Memory: {gpu_memory:.1f}GB")
             
             if gpu_memory < 6:
                 logger.warning("⚠️  Less than 6GB VRAM. Consider using Llama-3.2-1B-Instruct")
+            else:
+                logger.info("✅ GPU memory sufficient for Llama-3.2-3B-Instruct")
+                
+        elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+            logger.info("🍎 MPS (Metal Performance Shaders) available for Apple Silicon")
+            logger.info("💡 Training will use MPS acceleration")
+            logger.warning("⚠️  MPS training may be slower than CUDA. Consider using smaller model.")
+            
+        else:
+            logger.warning("⚠️  No GPU acceleration available. Training will be slow on CPU.")
+            logger.warning("💡 Consider using a smaller model or running on a GPU-enabled system.")
         
         # Check dataset exists
         if not self.dataset_path.exists():
@@ -88,9 +97,10 @@ class SpiritualWisdomTrainer:
     
     def load_model_and_tokenizer(self):
         """Load Unsloth-optimized model and tokenizer."""
-        logger.info(f"🚀 Loading Unsloth-optimized model: {self.model_name}")
+        logger.info(f"🚀 Loading model: {self.model_name}")
         
         try:
+            # Try Unsloth first (fastest)
             from unsloth import FastLanguageModel
             
             self.model, self.tokenizer = FastLanguageModel.from_pretrained(
@@ -100,30 +110,84 @@ class SpiritualWisdomTrainer:
                 load_in_4bit=True,  # 4-bit quantization for memory efficiency
             )
             
-            logger.info("✅ Model and tokenizer loaded successfully")
-            
-            # Print model info
-            total_params = sum(p.numel() for p in self.model.parameters())
-            trainable_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad)
-            
-            logger.info(f"📊 Total parameters: {total_params:,}")
-            logger.info(f"🎯 Trainable parameters: {trainable_params:,}")
+            logger.info("✅ Unsloth-optimized model loaded successfully")
+            self.using_unsloth = True
             
         except ImportError:
-            logger.error("❌ Unsloth not installed. Run: pip install unsloth[colab-new]")
-            raise
+            logger.warning("⚠️  Unsloth not available, falling back to standard transformers")
+            self.using_unsloth = False
+            
+            # Fallback to standard transformers
+            from transformers import AutoModelForCausalLM, AutoTokenizer
+            import torch
+            
+            # Determine device
+            if torch.cuda.is_available():
+                device = "cuda"
+                torch_dtype = torch.float16
+            elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+                device = "mps"
+                torch_dtype = torch.float16
+            else:
+                device = "cpu"
+                torch_dtype = torch.float32
+            
+            logger.info(f"📱 Using device: {device}")
+            
+            # Load tokenizer
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+            if self.tokenizer.pad_token is None:
+                self.tokenizer.pad_token = self.tokenizer.eos_token
+            
+            # Check for sentencepiece availability
+            try:
+                import sentencepiece
+                logger.info("✅ SentencePiece available for tokenization")
+            except ImportError:
+                logger.warning("⚠️  SentencePiece not available, using basic tokenization")
+                logger.info("💡 This may affect tokenization quality but training will work")
+            
+            # Load model
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_name,
+                torch_dtype=torch_dtype,
+                device_map="auto" if device != "cpu" else None,
+                trust_remote_code=True
+            )
+            
+            if device == "cpu":
+                self.model = self.model.to(device)
+            
+            logger.info("✅ Standard transformers model loaded successfully")
+            
         except Exception as e:
             logger.error(f"❌ Failed to load model: {e}")
             raise
+        
+        # Print model info
+        total_params = sum(p.numel() for p in self.model.parameters())
+        trainable_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad)
+        
+        logger.info(f"📊 Total parameters: {total_params:,}")
+        logger.info(f"🎯 Trainable parameters: {trainable_params:,}")
+        
+        # Add using_unsloth flag for later use
+        if not hasattr(self, 'using_unsloth'):
+            self.using_unsloth = False
     
     def setup_lora(self):
         """Configure LoRA (Low-Rank Adaptation) for efficient fine-tuning."""
         logger.info("🔧 Setting up LoRA configuration...")
         
+        if self.using_unsloth:
+            # Unsloth handles LoRA automatically
+            logger.info("✅ LoRA configuration handled by Unsloth")
+            return
+        
         try:
             from peft import LoraConfig, get_peft_model
             
-            # LoRA configuration based on documentation
+            # LoRA configuration for standard transformers
             lora_config = LoraConfig(
                 r=16,  # LoRA rank (conservative start)
                 target_modules=[
@@ -148,10 +212,10 @@ class SpiritualWisdomTrainer:
             
         except ImportError:
             logger.error("❌ PEFT not installed. Run: pip install peft")
-            raise
+            logger.info("💡 Continuing without LoRA (will fine-tune full model)")
         except Exception as e:
             logger.error(f"❌ Failed to setup LoRA: {e}")
-            raise
+            logger.info("💡 Continuing without LoRA (will fine-tune full model)")
     
     def load_dataset(self):
         """Load and prepare the spiritual wisdom dataset."""

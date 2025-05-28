@@ -1,6 +1,6 @@
 # 🧘‍♂️ Spiritual Wisdom AI Fine-tuning Project
 
-Transform ancient wisdom into modern AI guidance using **Unsloth + Llama 3.2** for lightning-fast fine-tuning!
+Transform ancient wisdom into modern AI guidance using **Unsloth + Llama 3.2** for lightning-fast fine-tuning in a clean virtual environment!
 
 ## 🌟 What This Project Does
 
@@ -14,22 +14,25 @@ This project fine-tunes **Llama 3.2** to become a wise spiritual teacher that ca
 
 ## 🚀 Quick Start (5 Minutes)
 
-### 1. Setup Environment
+### 1. Setup Virtual Environment
 ```bash
-# Clone and enter the project
-cd guru
-
-# Run automated setup (installs everything!)
+# Create isolated environment and install everything
 python3 setup_environment.py
 ```
 
-### 2. Start Fine-tuning
+### 2. Activate & Train
 ```bash
-# Begin training your AI spiritual teacher
-python3 finetune_llama_unsloth.py
+# On macOS/Linux
+./activate_venv.sh
+
+# On Windows  
+activate_venv.bat
+
+# Start training (in activated environment)
+python finetune_llama_unsloth.py
 ```
 
-**That's it!** 🎉 Your AI will start learning from 520+ spiritual wisdom examples.
+**That's it!** 🎉 Your AI will start learning from 520+ spiritual wisdom examples in a clean, isolated environment.
 
 ## 📊 Project Highlights
 
@@ -38,6 +41,7 @@ python3 finetune_llama_unsloth.py
 - **📚 Rich Dataset**: 520 carefully curated spiritual wisdom entries
 - **🎯 Production Ready**: Complete pipeline from training to inference
 - **🔧 Highly Configurable**: Easy to customize and extend
+- **🏠 Virtual Environment**: Clean, isolated dependencies
 
 ## 🎯 Technical Specifications
 
@@ -48,6 +52,7 @@ python3 finetune_llama_unsloth.py
 | **Training** | QLoRA with rank-16, 3 epochs |
 | **Memory** | 6-8GB VRAM (3B model) or 4-5GB (1B model) |
 | **Time** | ~2-3 hours on RTX 4070 |
+| **Environment** | Isolated virtual environment |
 | **Output** | Fine-tuned model ready for spiritual guidance |
 
 ## 📁 Project Structure
@@ -64,37 +69,52 @@ guru/
 ├── 🤖 models/                      # Trained models (created during training)
 ├── 📝 logs/                        # Training logs
 ├── 📋 requirements.txt             # All dependencies
+├── 🏠 venv/                        # Virtual environment (auto-created)
+├── 🔧 activate_venv.sh/.bat        # Easy activation scripts
 ├── 📖 QUICK_START.md              # Detailed setup guide
 └── 🗺️ unsloth_llama_finetuning_plan.md  # Complete implementation plan
 ```
 
 ## 🔧 Advanced Usage
 
-### Custom Model Selection
+### Custom Model Selection (in activated environment)
 ```bash
 # Use smaller model for limited VRAM
-python3 finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct
+python finetune_llama_unsloth.py --model unsloth/Llama-3.2-1B-Instruct
 
 # Custom output directory
-python3 finetune_llama_unsloth.py --output models/my-spiritual-guru
+python finetune_llama_unsloth.py --output models/my-spiritual-guru
 ```
 
-### Testing and Evaluation
+### Testing and Evaluation (in activated environment)
 ```bash
 # Test dataset format
-python3 test_dataset.py
+python test_dataset.py
 
 # Test existing model
-python3 finetune_llama_unsloth.py --test-only
+python finetune_llama_unsloth.py --test-only
 ```
 
-### Monitoring Training
+### Monitoring Training (in activated environment)
 ```bash
 # Watch training progress
 tail -f training.log
 
 # Monitor GPU usage
 watch -n 1 nvidia-smi
+```
+
+### Virtual Environment Management
+```bash
+# Check installed packages
+pip list
+
+# Update dependencies
+pip install --upgrade transformers
+
+# Reset environment completely
+rm -rf venv/
+python3 setup_environment.py
 ```
 
 ## 📈 Expected Results
@@ -118,6 +138,15 @@ After training, your AI spiritual teacher will respond like this:
 - **16GB+ System RAM**
 - **Fast SSD** for dataset loading
 - **CUDA 12.1+**
+
+## 🏠 Virtual Environment Benefits
+
+Using a virtual environment provides:
+- **🔒 Isolation**: No conflicts with other Python projects
+- **🧹 Clean State**: Fresh environment every time
+- **📦 Reproducibility**: Exact dependency versions
+- **🚀 Easy Reset**: Delete `venv/` folder to start over
+- **🤝 Sharing**: Portable setup for team collaboration
 
 ## 🎓 Learning Resources
 
