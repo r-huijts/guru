@@ -175,171 +175,8076 @@ python3 setup_environment.py
 
 *May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
 
-## 📋 Prerequisites
+## 🎉 Next Steps
 
-- Python 3.8+
-- 6GB+ GPU memory (recommended)
-- Basic familiarity with command line
+After successful training:
 
-## 🛠️ Setup (One-time)
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
 
-### 1. Create and Activate Virtual Environment
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
 ```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate it
-source venv/bin/activate  # On macOS/Linux
-# OR
-venv\Scripts\activate     # On Windows
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
 ```
 
-### 2. Run Setup Script
+### Managing the Environment
 ```bash
-python setup_environment.py
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
 ```
 
-This will:
-- Install all required dependencies
-- Download and prepare the spiritual wisdom dataset
-- Set up the project structure
+---
 
-## 🎯 Training Your Spiritual AI
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
 
-### Basic Training
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
 ```bash
-# Activate virtual environment first
-source venv/bin/activate
-
-# Start training with evaluation monitoring
-python finetune_llama_unsloth.py
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
 ```
 
-### Advanced Training Options
+### Managing the Environment
 ```bash
-# Custom model and dataset
-python finetune_llama_unsloth.py \
-    --model "unsloth/Llama-3.2-1B-Instruct" \
-    --dataset "datasets/custom_wisdom.jsonl" \
-    --output "models/my-spiritual-ai"
+# Check what's installed
+pip list
 
-# Enable early stopping to prevent overfitting
-python finetune_llama_unsloth.py --early-stopping
+# Update a package
+pip install --upgrade transformers
 
-# Custom sequence length for longer conversations
-python finetune_llama_unsloth.py --max-length 4096
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
 ```
 
-## 📊 Evaluation and Monitoring
+---
 
-The training now includes comprehensive evaluation monitoring:
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
 
-### Real-time Evaluation
-- **Evaluation every 25 steps**: Monitor model performance during training
-- **Best model tracking**: Automatically saves the best performing checkpoint
-- **Loss trend analysis**: See if your model is improving, stable, or overfitting
-- **Custom metrics**: Detailed logging of training progress
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
 
-### What You'll See During Training
-```
-📊 Step 25 Evaluation:
-   🧘‍♂️ Eval Loss: 2.1234 🎉 NEW BEST!
-   📈 Train Loss: 2.3456
-   🎓 Learning Rate: 1.50e-04
-   📊 Trend: 📉 Improving
+## 🎉 Next Steps
 
-📊 Step 50 Evaluation:
-   🧘‍♂️ Eval Loss: 2.0987 🎉 NEW BEST!
-   📈 Train Loss: 2.2134
-   🎓 Learning Rate: 1.40e-04
-   📊 Trend: 📉 Improving
-```
+After successful training:
 
-### Post-Training Analysis
-After training completes, you'll get:
-- **Evaluation summary**: Complete training metrics saved to `evaluation_summary.json`
-- **Best model**: Automatically loaded and saved
-- **Improvement analysis**: How much your model improved during training
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
 
-## 🧪 Testing Your Model
+## 🧘‍♂️ Philosophy
 
-### Quick Test
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
 ```bash
-# Test the trained model
-python finetune_llama_unsloth.py --test-only
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
 ```
 
-### Custom Test Questions
-Edit the `test_prompts` in the script to ask your own spiritual questions!
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
 
-## 📁 Output Structure
+# Update a package
+pip install --upgrade transformers
 
-After training, you'll have:
-```
-models/spiritual-wisdom-llama/
-├── pytorch_model.bin          # Your fine-tuned model
-├── tokenizer.json            # Tokenizer files
-├── config.json               # Model configuration
-├── evaluation_summary.json   # Training metrics and analysis
-└── logs/                     # Detailed training logs
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
 ```
 
-## 🎛️ Training Configuration
+---
 
-The script automatically optimizes for:
-- **Memory efficiency**: 4-bit quantization + LoRA
-- **Speed**: Unsloth 2x faster training
-- **Quality**: Proper evaluation and checkpointing
-- **Monitoring**: Real-time loss tracking and trend analysis
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
 
-### Key Settings
-- **Batch size**: 2 per device (8 effective with gradient accumulation)
-- **Learning rate**: 2e-4 (optimized for spiritual content)
-- **Evaluation**: Every 25 steps with automatic best model selection
-- **Checkpoints**: Saved every 50 steps (keep 5 best)
-- **Early stopping**: Optional (use `--early-stopping` flag)
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
 
-## 🚨 Troubleshooting
+## 🎉 Next Steps
 
-### Common Issues
+After successful training:
 
-1. **CUDA out of memory**
-   - Use smaller model: `--model "unsloth/Llama-3.2-1B-Instruct"`
-   - Reduce sequence length: `--max-length 1024`
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
 
-2. **Slow training on CPU**
-   - Consider using Google Colab or RunPod for GPU access
-   - The script will warn you about CPU training
+## 🧘‍♂️ Philosophy
 
-3. **Poor model responses**
-   - Check evaluation metrics in `evaluation_summary.json`
-   - Consider training for more epochs or adjusting learning rate
-   - Enable early stopping to prevent overfitting
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
 
-4. **Import errors**
-   - Rerun: `python setup_environment.py`
-   - Activate virtual environment: `source venv/bin/activate`
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
 
-## 🎉 Success Indicators
+## 💡 Virtual Environment Tips
 
-Your training is going well if you see:
-- ✅ Decreasing evaluation loss over time
-- ✅ "📉 Improving" trend indicators
-- ✅ Regular "🎉 NEW BEST!" messages
-- ✅ Final improvement percentage > 10%
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
 
-## 🔄 Next Steps
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
 
-1. **Test thoroughly**: Try various spiritual questions
-2. **Iterate**: Adjust hyperparameters based on evaluation metrics
-3. **Expand dataset**: Add more spiritual wisdom examples
-4. **Deploy**: Use your fine-tuned model in applications
+# Update a package
+pip install --upgrade transformers
 
-## 💡 Pro Tips
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
 
-- **Monitor evaluation loss**: If it stops improving, consider early stopping
-- **Check trends**: Consistent "📈 Increasing" trends may indicate overfitting
-- **Save checkpoints**: The best model is automatically saved for you
-- **Use evaluation data**: The 10% held-out data gives unbiased performance estimates
+---
 
-Happy training! 🧘‍♂️✨ 
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual teacher is designed to:
+- Guide rather than dictate
+- Inspire contemplation
+- Respect diverse spiritual paths
+- Encourage inner exploration
+- Share timeless wisdom
+
+## 💡 Virtual Environment Tips
+
+### Daily Workflow
+```bash
+# Start your session
+./activate_venv.sh                    # Activate environment
+python finetune_llama_unsloth.py     # Train your model
+python test_dataset.py               # Test dataset
+deactivate                           # Exit when done
+```
+
+### Managing the Environment
+```bash
+# Check what's installed
+pip list
+
+# Update a package
+pip install --upgrade transformers
+
+# Completely reset environment
+rm -rf venv/
+python3 setup_environment.py
+```
+
+---
+
+**Ready to begin?** Run `python3 setup_environment.py` and start your journey! 🌟
+
+*May your AI teacher bring wisdom, peace, and enlightenment to all who seek guidance.* ✨ 
+
+## 🎉 Next Steps
+
+After successful training:
+
+1. **Share Wisdom**: Test with your own spiritual questions
+2. **Deploy**: Convert to GGUF for local inference
+3. **Iterate**: Collect feedback and retrain
+4. **Expand**: Add more spiritual texts to your dataset
+5. **Integrate**: Build a chat interface or API
+
+## 🧘‍♂️ Philosophy
+
+> "The best teacher is not the one who knows the most, but the one who awakens the wisdom that already exists within the student."
+
+Your AI spiritual
