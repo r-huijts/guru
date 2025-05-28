@@ -1,0 +1,7 @@
+# Requirements for Fine-Tuning Dataset Generator
+# No external dependencies needed - uses only Python standard library!
+
+# Optional: For enhanced text processing (uncomment if needed)
+# nltk>=3.8
+# spacy>=3.4.0
+# transformers>=4.20.0 
