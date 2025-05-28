@@ -39,11 +39,12 @@ class SpiritualWisdomEvaluationCallback:
         self.best_eval_loss = float('inf')
         self.eval_history = []
     
-    def on_evaluate(self, args, state, control, model, tokenizer, eval_dataloader, **kwargs):
-        """Called after each evaluation step."""
+    def on_log(self, args, state, control, model=None, tokenizer=None, **kwargs):
+        """Called when logging occurs - we'll use this instead of on_evaluate."""
         if hasattr(state, 'log_history') and state.log_history:
             latest_log = state.log_history[-1]
             
+            # Only process if this log contains evaluation metrics
             if 'eval_loss' in latest_log:
                 eval_loss = latest_log['eval_loss']
                 step = latest_log.get('step', state.global_step)
@@ -80,6 +81,8 @@ class SpiritualWisdomEvaluationCallback:
                     else:
                         trend = "➡️ Stable"
                     logger.info(f"   📊 Trend: {trend}")
+        
+        return control
 
 
 class SpiritualWisdomTrainer:
@@ -442,10 +445,6 @@ class SpiritualWisdomTrainer:
             # Create callbacks for better monitoring
             callbacks = []
             
-            # Add our custom evaluation callback
-            self.eval_callback = SpiritualWisdomEvaluationCallback()
-            callbacks.append(self.eval_callback)
-            
             # Add early stopping callback if enabled
             if self.enable_early_stopping:
                 early_stopping = EarlyStoppingCallback(early_stopping_patience=3)
@@ -482,12 +481,19 @@ class SpiritualWisdomTrainer:
         logger.info("📊 Creating evaluation summary...")
         
         try:
+            # Get evaluation metrics from trainer's log history
+            eval_logs = [log for log in self.trainer.state.log_history if 'eval_loss' in log]
+            
+            # Find best evaluation loss
+            best_eval_loss = min(log['eval_loss'] for log in eval_logs) if eval_logs else None
+            
             # Save evaluation history
             eval_summary = {
-                'best_eval_loss': self.eval_callback.best_eval_loss,
-                'total_evaluations': len(self.eval_callback.eval_history),
-                'evaluation_history': self.eval_callback.eval_history,
-                'final_metrics': self.eval_callback.eval_history[-1] if self.eval_callback.eval_history else None
+                'best_eval_loss': best_eval_loss,
+                'total_evaluations': len(eval_logs),
+                'evaluation_history': eval_logs,
+                'final_metrics': eval_logs[-1] if eval_logs else None,
+                'training_completed': datetime.now().isoformat()
             }
             
             # Save to JSON file
@@ -495,29 +501,24 @@ class SpiritualWisdomTrainer:
             with open(summary_path, 'w') as f:
                 json.dump(eval_summary, f, indent=2)
             
-            logger.info(f"💾 Evaluation summary saved to: {summary_path}")
+            logger.info(f"✅ Evaluation summary saved to {summary_path}")
             
             # Print summary
-            if self.eval_callback.eval_history:
-                first_eval = self.eval_callback.eval_history[0]
-                last_eval = self.eval_callback.eval_history[-1]
+            if eval_logs:
+                first_eval = eval_logs[0]
+                last_eval = eval_logs[-1]
                 improvement = first_eval['eval_loss'] - last_eval['eval_loss']
                 improvement_pct = (improvement / first_eval['eval_loss']) * 100
                 
                 logger.info("📈 Training Evaluation Summary:")
-                logger.info(f"   🎯 Best Eval Loss: {self.eval_callback.best_eval_loss:.4f}")
-                logger.info(f"   📊 Total Evaluations: {len(self.eval_callback.eval_history)}")
+                logger.info(f"   🎯 Best Eval Loss: {best_eval_loss:.4f}")
+                logger.info(f"   📊 Total Evaluations: {len(eval_logs)}")
                 logger.info(f"   📉 Loss Improvement: {improvement:.4f} ({improvement_pct:.1f}%)")
                 logger.info(f"   🏁 Final Eval Loss: {last_eval['eval_loss']:.4f}")
                 
-                # Check if model improved
-                if improvement > 0:
-                    logger.info("✅ Model showed improvement during training!")
-                else:
-                    logger.warning("⚠️  Model may need more training or different hyperparameters")
-            
         except Exception as e:
-            logger.warning(f"⚠️  Could not create evaluation summary: {e}")
+            logger.warning(f"⚠️ Could not save evaluation summary: {e}")
+            logger.info("📊 Training completed successfully despite summary issue")
     
     def train(self):
         """Execute the fine-tuning process."""
@@ -617,7 +618,7 @@ class SpiritualWisdomTrainer:
     
     def run_full_pipeline(self):
         """Execute the complete fine-tuning pipeline."""
-        logger.info("🌟 Starting Spiritual Wisdom Fine-tuning Pipeline")
+        logger.info("�� Starting Spiritual Wisdom Fine-tuning Pipeline")
         logger.info("=" * 60)
         
         try:
