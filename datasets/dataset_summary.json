@@ -1,0 +1,43 @@
+{
+  "dataset_info": {
+    "total_segments": 414,
+    "qa_pairs_extracted": 95,
+    "total_training_examples": 520,
+    "target_model": "LLAMA (optimized)",
+    "formats_generated": [
+      "llama_optimized.jsonl (RECOMMENDED)",
+      "alpaca_format.jsonl",
+      "qa_alpaca_format.jsonl",
+      "conversation_format.jsonl",
+      "qa_format.json"
+    ]
+  },
+  "llama_optimization": {
+    "primary_format": "llama_optimized.jsonl",
+    "instruction_style": "Question-answering and wisdom-sharing focused",
+    "response_style": "Preserves speaker's authentic teaching voice",
+    "key_features": [
+      "Enhanced instruction templates for spiritual/philosophical content",
+      "Optimized Q&A extraction from natural speech patterns",
+      "Direct teaching examples for wisdom-sharing",
+      "Expanded keyword recognition for better context matching"
+    ]
+  },
+  "usage_recommendations": {
+    "llama_optimized": "🎯 PRIMARY: Best for LLAMA instruction-following with authentic voice",
+    "alpaca_format": "Standard Alpaca format for general instruction-following",
+    "qa_alpaca_format": "Q&A pairs in Alpaca format for focused question-answering",
+    "conversation_format": "Reference: Chat-style format (not optimal for LLAMA)",
+    "qa_format": "Reference: Pure Q&A pairs in JSON format"
+  },
+  "runpod_llama_tips": [
+    "🚀 Use llama_optimized.jsonl for best results",
+    "📊 Learning rate: 1e-5 to 3e-5 (start conservative)",
+    "🔄 Batch size: 4-8 depending on GPU memory",
+    "📈 Epochs: 3-5 (monitor for overfitting)",
+    "⚡ Method: LoRA recommended (rank 16-64)",
+    "🎯 Focus: This data is optimized for wisdom/teaching responses",
+    "⚠️ Monitor: Watch for overfitting due to specialized domain",
+    "🔍 Validation: Keep some examples aside for testing"
+  ]
+}

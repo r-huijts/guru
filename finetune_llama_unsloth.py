@@ -308,7 +308,7 @@ class SpiritualWisdomTrainer:
             dataloader_pin_memory=False,
             
             # Evaluation and saving
-            evaluation_strategy="no",  # No validation set for now
+            eval_strategy="no",  # Changed from evaluation_strategy
             save_strategy="steps",
             load_best_model_at_end=False,
             

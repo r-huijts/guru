@@ -83,14 +83,7 @@ Thumbs.db
 *.gguf
 *.ggml
 
-# Data files (keep private)
-data/*.txt
-data/*.json
-data/*.csv
 
-# Generated datasets (too large for git)
-datasets/*.jsonl
-datasets/*.json
 
 # Logs
 *.log
