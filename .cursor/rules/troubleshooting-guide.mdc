@@ -1,0 +1,298 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Troubleshooting Guide
+
+## Overview
+This guide covers common issues encountered during spiritual AI fine-tuning and their solutions, based on real-world testing across different platforms and configurations.
+
+## Training Issues
+
+### Memory Problems
+
+#### CUDA Out of Memory
+**Symptoms**: `RuntimeError: CUDA out of memory`
+**Solutions**:
+```bash
+# Use smaller model
+python finetune_llama_unsloth.py --model "unsloth/Llama-3.2-1B-Instruct"
+
+# Reduce sequence length
+python finetune_llama_unsloth.py --max-length 1024
+
+# Check current VRAM usage
+nvidia-smi
+```
+
+#### Insufficient System RAM
+**Symptoms**: System becomes unresponsive, excessive swap usage
+**Solutions**:
+- Close other applications before training
+- Use smaller batch sizes (already optimized in script)
+- Consider cloud training (RunPod, Google Colab)
+
+### Parameter and Configuration Errors
+
+#### Deprecated `evaluation_strategy`
+**Error**: `evaluation_strategy is deprecated, use eval_strategy`
+**Solution**: Already fixed in [finetune_llama_unsloth.py](mdc:finetune_llama_unsloth.py)
+```python
+# Fixed in current version
+eval_strategy="steps"  # Not evaluation_strategy
+```
+
+#### Quantization Error
+**Error**: `Cannot perform fine-tuning on purely quantized models`
+**Solution**: Use Unsloth's `get_peft_model()` method (implemented in script)
+```python
+# Correct approach (already in script)
+model = FastLanguageModel.get_peft_model(
+    model,
+    r=16,
+    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    use_gradient_checkpointing="unsloth"
+)
+```
+
+## Environment Setup Issues
+
+### Package Installation Problems
+
+#### SentencePiece Build Failures (macOS)
+**Symptoms**: Build errors during `pip install sentencepiece`
+**Solution**: Made optional in [setup_environment.py](mdc:setup_environment.py)
+```python
+# Graceful fallback implemented
+try:
+    import sentencepiece
+    logger.info("✅ SentencePiece available")
+except ImportError:
+    logger.warning("⚠️ SentencePiece not available, using basic tokenization")
+```
+
+#### Unsloth Installation Issues
+**Symptoms**: `ImportError: No module named 'unsloth'`
+**Solutions**:
+```bash
+# Reinstall with specific version
+pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+
+# Or fallback to standard transformers (handled automatically)
+```
+
+#### CUDA/PyTorch Compatibility
+**Symptoms**: CUDA not detected, MPS not available
+**Solution**: Platform-specific installation in [setup_environment.py](mdc:setup_environment.py)
+```bash
+# For CUDA systems
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# For Apple Silicon
+pip install torch torchvision torchaudio
+```
+
+### Virtual Environment Issues
+
+#### Environment Not Activated
+**Symptoms**: Packages not found, wrong Python version
+**Solutions**:
+```bash
+# Use activation helper
+./activate_venv.sh
+
+# Or manual activation
+source venv/bin/activate
+
+# Verify activation
+which python  # Should show venv/bin/python
+```
+
+#### Corrupted Environment
+**Symptoms**: Import errors, version conflicts
+**Solution**:
+```bash
+# Complete reset
+rm -rf venv/
+python3 setup_environment.py
+```
+
+## Dataset and Data Issues
+
+### Dataset Not Found
+**Error**: `FileNotFoundError: Dataset not found`
+**Solutions**:
+```bash
+# Verify dataset exists
+python test_dataset.py
+
+# Regenerate if missing
+python generate_finetuning_dataset.py
+
+# Check file path
+ls -la datasets/llama_optimized.jsonl
+```
+
+### Malformed Dataset
+**Symptoms**: JSON parsing errors, missing fields
+**Solution**: Run [test_dataset.py](mdc:test_dataset.py) for validation
+```bash
+python test_dataset.py
+# Will show specific formatting issues
+```
+
+### Empty or Corrupted Responses
+**Symptoms**: Model generates empty or nonsensical responses
+**Solutions**:
+- Check evaluation metrics in `evaluation_summary.json`
+- Verify dataset quality with `test_dataset.py`
+- Consider training for more epochs
+- Enable early stopping to prevent overfitting
+
+## Platform-Specific Issues
+
+### Apple Silicon (M1/M2/M3) Issues
+
+#### MPS Not Available
+**Symptoms**: Training falls back to CPU
+**Solutions**:
+```bash
+# Verify MPS support
+python -c "import torch; print(torch.backends.mps.is_available())"
+
+# Update PyTorch if needed
+pip install --upgrade torch torchvision torchaudio
+```
+
+#### Slow Training on MPS
+**Symptoms**: Training much slower than expected
+**Solutions**:
+- Use smaller model: `--model "unsloth/Llama-3.2-1B-Instruct"`
+- Consider cloud training for faster results
+- MPS optimization is still improving in PyTorch
+
+### Linux/CUDA Issues
+
+#### CUDA Version Mismatch
+**Symptoms**: `RuntimeError: CUDA runtime error`
+**Solutions**:
+```bash
+# Check CUDA version
+nvidia-smi
+
+# Install matching PyTorch
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
+#### Driver Issues
+**Symptoms**: GPU not detected
+**Solutions**:
+- Update NVIDIA drivers
+- Restart system after driver update
+- Check with `nvidia-smi`
+
+## Training Quality Issues
+
+### Poor Model Responses
+
+#### Fragmented or Incoherent Responses
+**Symptoms**: Model generates incomplete or nonsensical answers
+**Solutions**:
+1. Check evaluation trends in logs
+2. Verify dataset quality
+3. Adjust generation parameters in `test_model()`:
+```python
+# Better generation parameters (already implemented)
+temperature=0.8,
+top_p=0.9,
+top_k=50,
+repetition_penalty=1.1
+```
+
+#### Overfitting
+**Symptoms**: Training loss decreases but eval loss increases
+**Solutions**:
+- Enable early stopping: `--early-stopping`
+- Monitor evaluation trends
+- Reduce training epochs
+- Increase LoRA dropout
+
+#### Underfitting
+**Symptoms**: Both losses plateau at high values
+**Solutions**:
+- Increase LoRA rank (modify script)
+- Train for more epochs
+- Increase learning rate slightly
+- Check dataset quality
+
+## Performance Issues
+
+### Slow Training
+**Symptoms**: Training takes much longer than expected
+**Causes and Solutions**:
+- **CPU training**: Verify GPU acceleration is working
+- **Small batch size**: Already optimized in script
+- **Large model**: Use `--model "unsloth/Llama-3.2-1B-Instruct"`
+- **Inefficient setup**: Ensure Unsloth is properly installed
+
+### High Memory Usage
+**Symptoms**: System becomes unresponsive
+**Solutions**:
+- Monitor with `nvidia-smi` or Activity Monitor
+- Close unnecessary applications
+- Use gradient checkpointing (already enabled)
+- Reduce sequence length
+
+## Recovery Procedures
+
+### Resume from Checkpoint
+If training is interrupted:
+```bash
+# Training automatically resumes from latest checkpoint
+python finetune_llama_unsloth.py
+```
+
+### Recover Best Model
+If final model is corrupted:
+```bash
+# Check available checkpoints
+ls models/spiritual-wisdom-llama/checkpoint-*/
+
+# Manually copy best checkpoint
+cp -r models/spiritual-wisdom-llama/checkpoint-150/* models/spiritual-wisdom-llama/
+```
+
+### Complete Reset
+If everything fails:
+```bash
+# Reset environment and start fresh
+rm -rf venv/ models/ logs/
+python3 setup_environment.py
+python finetune_llama_unsloth.py
+```
+
+## Getting Help
+
+### Diagnostic Information
+When reporting issues, include:
+```bash
+# System info
+python --version
+pip list | grep -E "(torch|transformers|unsloth|peft|trl)"
+
+# GPU info
+nvidia-smi  # or system_profiler SPDisplaysDataType on macOS
+
+# Training logs
+tail -50 training.log
+```
+
+### Log Analysis
+Check [training.log](mdc:training.log) for:
+- Error messages and stack traces
+- Memory usage warnings
+- Evaluation trends
+- Performance metrics
+
+This guide covers the most common issues encountered during spiritual AI fine-tuning. Most problems have been anticipated and handled gracefully in the current implementation.

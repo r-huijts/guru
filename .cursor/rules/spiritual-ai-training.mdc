@@ -1,0 +1,109 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Spiritual Wisdom AI Training Project
+
+## Project Overview
+This project fine-tunes Llama 3.2 using Unsloth for spiritual wisdom instruction following. The main training script is [finetune_llama_unsloth.py](mdc:finetune_llama_unsloth.py) with comprehensive evaluation monitoring.
+
+## Key Files and Structure
+
+### Core Training Files
+- **[finetune_llama_unsloth.py](mdc:finetune_llama_unsloth.py)**: Main training script with Unsloth optimization and evaluation
+- **[setup_environment.py](mdc:setup_environment.py)**: Automated environment setup and dependency installation
+- **[test_dataset.py](mdc:test_dataset.py)**: Dataset verification and validation
+- **[requirements.txt](mdc:requirements.txt)**: All Python dependencies for the project
+
+### Dataset and Configuration
+- **[datasets/llama_optimized.jsonl](mdc:datasets/llama_optimized.jsonl)**: 520 spiritual wisdom examples in instruction-input-output format
+- **[generate_finetuning_dataset.py](mdc:generate_finetuning_dataset.py)**: Dataset generation and formatting script
+
+### Documentation
+- **[QUICK_START.md](mdc:QUICK_START.md)**: Complete setup and training guide with evaluation features
+- **[README.md](mdc:README.md)**: Project overview and getting started
+- **[unsloth_llama_finetuning_plan.md](mdc:unsloth_llama_finetuning_plan.md)**: Detailed implementation plan
+
+### Utility Scripts
+- **[activate_venv.sh](mdc:activate_venv.sh)**: Virtual environment activation helper
+
+## Training Features
+
+### Evaluation System
+- **Real-time monitoring**: Evaluation every 25 training steps
+- **Best model tracking**: Automatically saves best checkpoint based on eval loss
+- **Trend analysis**: Shows if model is improving, stable, or overfitting
+- **Custom callback**: `SpiritualWisdomEvaluationCallback` for detailed logging
+
+### Training Configuration
+- **Model**: `unsloth/Llama-3.2-3B-Instruct` (6GB VRAM) or `unsloth/Llama-3.2-1B-Instruct` (4GB VRAM)
+- **Dataset split**: 90% training, 10% evaluation (468/52 examples)
+- **Batch size**: 2 per device with 4x gradient accumulation (effective batch size: 8)
+- **Learning rate**: 2e-4 with linear scheduler
+- **Precision**: BF16 for memory optimization
+- **LoRA**: Rank 16, targeting all attention and MLP layers
+
+### Command Line Options
+```bash
+# Basic training with evaluation
+python finetune_llama_unsloth.py
+
+# Enable early stopping
+python finetune_llama_unsloth.py --early-stopping
+
+# Custom model and output
+python finetune_llama_unsloth.py --model "unsloth/Llama-3.2-1B-Instruct" --output "models/my-spiritual-ai"
+
+# Test existing model
+python finetune_llama_unsloth.py --test-only
+```
+
+## Virtual Environment Workflow
+
+### Setup
+1. Run `python setup_environment.py` for automated setup
+2. Activate with `source venv/bin/activate` or `./activate_venv.sh`
+3. Verify with `python test_dataset.py`
+
+### Training Process
+1. **Initialization**: Load Unsloth-optimized model with 4-bit quantization
+2. **LoRA Setup**: Add trainable adapters using `FastLanguageModel.get_peft_model()`
+3. **Dataset Loading**: Split into train/eval sets with proper Llama 3.2 chat formatting
+4. **Training**: SFT with evaluation every 25 steps and best model tracking
+5. **Testing**: Automatic model testing with spiritual questions
+
+## Output Structure
+```
+models/spiritual-wisdom-llama/
+├── pytorch_model.bin          # Fine-tuned model weights
+├── adapter_config.json        # LoRA adapter configuration
+├── adapter_model.bin          # LoRA adapter weights
+├── tokenizer.json            # Tokenizer files
+├── config.json               # Model configuration
+├── evaluation_summary.json   # Training metrics and analysis
+└── logs/                     # Detailed training logs
+```
+
+## Troubleshooting Common Issues
+
+### Memory Issues
+- Use smaller model: `--model "unsloth/Llama-3.2-1B-Instruct"`
+- Reduce sequence length: `--max-length 1024`
+- Check VRAM usage during training
+
+### Training Quality
+- Monitor evaluation loss trends in logs
+- Check `evaluation_summary.json` for improvement metrics
+- Enable early stopping if overfitting occurs
+
+### Environment Issues
+- Reinstall with `python setup_environment.py`
+- Check virtual environment activation
+- Verify CUDA/MPS availability for acceleration
+
+## Success Indicators
+- ✅ Decreasing evaluation loss over time
+- ✅ "📉 Improving" trend indicators during training
+- ✅ Regular "🎉 NEW BEST!" messages for new best models
+- ✅ Final improvement percentage > 10% in evaluation summary

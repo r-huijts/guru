@@ -1,0 +1,181 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Virtual Environment Workflow
+
+## Overview
+This project uses a clean virtual environment approach for dependency management and reproducible training. All setup is automated through [setup_environment.py](mdc:setup_environment.py).
+
+## Setup Process
+
+### Automated Setup
+The [setup_environment.py](mdc:setup_environment.py) script handles:
+- **Virtual environment creation**: Creates `venv/` directory
+- **Dependency installation**: Installs from [requirements.txt](mdc:requirements.txt) in correct order
+- **Platform detection**: Handles macOS (MPS) vs Linux (CUDA) differences
+- **Error handling**: Graceful fallbacks for problematic packages
+- **Dataset verification**: Ensures training data is available
+
+### Manual Setup (if needed)
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate environment
+source venv/bin/activate  # macOS/Linux
+# OR
+venv\Scripts\activate     # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## Activation Helpers
+
+### Quick Activation Script
+Use [activate_venv.sh](mdc:activate_venv.sh) for easy activation:
+```bash
+./activate_venv.sh
+```
+
+This script:
+- Activates the virtual environment
+- Shows current Python version and location
+- Displays installed key packages
+- Provides helpful usage tips
+
+### Manual Activation
+```bash
+source venv/bin/activate
+```
+
+## Dependency Management
+
+### Core Dependencies
+From [requirements.txt](mdc:requirements.txt):
+- **torch**: PyTorch with CUDA/MPS support
+- **transformers**: Hugging Face transformers library
+- **datasets**: Dataset loading and processing
+- **peft**: Parameter-efficient fine-tuning (LoRA)
+- **trl**: Transformer Reinforcement Learning
+- **unsloth**: 2x faster training optimization
+- **accelerate**: Multi-GPU and optimization support
+
+### Platform-Specific Handling
+The setup script detects:
+- **Apple Silicon**: Installs MPS-compatible PyTorch
+- **CUDA Systems**: Installs CUDA-enabled PyTorch
+- **CPU-only**: Fallback for systems without GPU acceleration
+
+### Optional Dependencies
+- **sentencepiece**: Better tokenization (installed if possible)
+- **bitsandbytes**: 8-bit optimization (CUDA only)
+- **flash-attn**: Attention optimization (if compatible)
+
+## Verification and Testing
+
+### Dataset Verification
+Run [test_dataset.py](mdc:test_dataset.py) to verify:
+- Dataset file exists and is readable
+- Correct JSONL format with required fields
+- Proper instruction-input-output structure
+- Expected number of examples (520)
+
+### Environment Check
+The training script [finetune_llama_unsloth.py](mdc:finetune_llama_unsloth.py) includes:
+- **GPU detection**: CUDA, MPS, or CPU fallback
+- **Memory checking**: VRAM availability for model size
+- **Package verification**: Ensures all required packages are available
+
+## Common Workflows
+
+### Daily Training Session
+```bash
+# 1. Activate environment
+./activate_venv.sh
+
+# 2. Verify setup
+python test_dataset.py
+
+# 3. Start training
+python finetune_llama_unsloth.py
+
+# 4. Deactivate when done
+deactivate
+```
+
+### Development Workflow
+```bash
+# Activate environment
+source venv/bin/activate
+
+# Make changes to training script
+# Test changes
+python finetune_llama_unsloth.py --test-only
+
+# Run full training
+python finetune_llama_unsloth.py
+
+# Deactivate
+deactivate
+```
+
+## Troubleshooting
+
+### Environment Issues
+```bash
+# Reset environment completely
+rm -rf venv/
+python3 setup_environment.py
+
+# Check what's installed
+pip list
+
+# Update specific package
+pip install --upgrade transformers
+```
+
+### Package Conflicts
+The setup script handles common issues:
+- **sentencepiece build failures**: Made optional on macOS
+- **CUDA compatibility**: Automatic detection and fallback
+- **Version conflicts**: Pinned versions in requirements.txt
+
+### Memory Issues
+- **Insufficient VRAM**: Script suggests smaller model variants
+- **System RAM**: Warns if less than 16GB available
+- **Swap usage**: Monitors for excessive swap usage
+
+## Best Practices
+
+### Environment Hygiene
+- **Always activate**: Use virtual environment for all operations
+- **Clean installs**: Remove `venv/` and reinstall if issues persist
+- **Version pinning**: Use exact versions from requirements.txt
+- **Regular updates**: Update packages periodically but test thoroughly
+
+### Development Tips
+- **Test first**: Always run `test_dataset.py` before training
+- **Monitor resources**: Watch memory usage during training
+- **Save checkpoints**: Training saves every 50 steps automatically
+- **Log everything**: All output is logged to `training.log`
+
+## Integration with Training
+
+### Pre-training Checks
+The training script verifies:
+1. Virtual environment is activated
+2. All required packages are available
+3. GPU acceleration is working
+4. Dataset is properly formatted
+5. Output directory is writable
+
+### Post-training Cleanup
+- Models saved to `models/` directory
+- Logs saved to `training.log`
+- Evaluation metrics in `evaluation_summary.json`
+- Virtual environment remains clean and reusable
+
+This workflow ensures reproducible, isolated training environments that work consistently across different systems and setups.

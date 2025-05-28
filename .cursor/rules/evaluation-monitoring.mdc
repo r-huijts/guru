@@ -1,0 +1,149 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Evaluation and Monitoring System
+
+## Overview
+The training script [finetune_llama_unsloth.py](mdc:finetune_llama_unsloth.py) includes a comprehensive evaluation system for monitoring spiritual AI training quality in real-time.
+
+## Key Components
+
+### SpiritualWisdomEvaluationCallback Class
+Located in [finetune_llama_unsloth.py](mdc:finetune_llama_unsloth.py), this custom callback provides:
+- **Real-time evaluation tracking**: Monitors eval loss every 25 steps
+- **Best model detection**: Automatically identifies and saves best performing checkpoints
+- **Trend analysis**: Calculates improvement trends over recent evaluations
+- **Detailed logging**: Comprehensive metrics logging with emojis for easy reading
+
+### Dataset Splitting Strategy
+- **90/10 split**: 468 training examples, 52 evaluation examples
+- **Reproducible**: Uses `seed=42` for consistent splits across runs
+- **Balanced**: Representative sample of spiritual wisdom content
+- **Unbiased evaluation**: Held-out data never seen during training
+
+## Evaluation Configuration
+
+### Training Arguments Setup
+```python
+# Evaluation every 25 training steps
+eval_strategy="steps"
+eval_steps=25
+eval_accumulation_steps=1
+eval_delay=0
+
+# Best model selection
+load_best_model_at_end=True
+metric_for_best_model="eval_loss"
+greater_is_better=False
+```
+
+### Monitoring Features
+- **Step-by-step tracking**: Evaluation loss, training loss, learning rate
+- **Best model alerts**: "🎉 NEW BEST!" notifications when model improves
+- **Trend indicators**: 📉 Improving, 📈 Increasing, ➡️ Stable
+- **Memory efficient**: `prediction_loss_only=True` to save VRAM
+
+## Output and Analysis
+
+### Real-time Console Output
+```
+📊 Step 25 Evaluation:
+   🧘‍♂️ Eval Loss: 2.1234 🎉 NEW BEST!
+   📈 Train Loss: 2.3456
+   🎓 Learning Rate: 1.50e-04
+   📊 Trend: 📉 Improving
+```
+
+### Evaluation Summary File
+Generated at `models/spiritual-wisdom-llama/evaluation_summary.json`:
+```json
+{
+  "best_eval_loss": 1.7285,
+  "total_evaluations": 8,
+  "evaluation_history": [...],
+  "final_metrics": {
+    "step": 195,
+    "eval_loss": 1.7285,
+    "train_loss": 1.8887,
+    "learning_rate": 2.896e-05
+  }
+}
+```
+
+## Early Stopping (Optional)
+
+### Configuration
+Enable with `--early-stopping` flag:
+```bash
+python finetune_llama_unsloth.py --early-stopping
+```
+
+### Settings
+- **Patience**: 3 evaluations without improvement
+- **Metric**: Evaluation loss (lower is better)
+- **Automatic**: Stops training and loads best checkpoint
+
+## Checkpointing Strategy
+
+### Frequent Saves
+- **Save every 50 steps**: More frequent than default for better recovery
+- **Keep 5 checkpoints**: Increased from 3 for better model selection
+- **Best model loading**: Automatically loads best performing checkpoint at end
+
+### Output Structure
+```
+models/spiritual-wisdom-llama/
+├── checkpoint-50/           # Step 50 checkpoint
+├── checkpoint-100/          # Step 100 checkpoint
+├── checkpoint-150/          # Step 150 checkpoint
+├── pytorch_model.bin        # Best model (automatically selected)
+└── evaluation_summary.json  # Complete evaluation history
+```
+
+## Quality Indicators
+
+### Good Training Signs
+- ✅ Consistent decrease in evaluation loss
+- ✅ Regular "🎉 NEW BEST!" messages
+- ✅ "📉 Improving" trend indicators
+- ✅ Final improvement > 10%
+
+### Warning Signs
+- ⚠️ Evaluation loss plateauing or increasing
+- ⚠️ Large gap between train and eval loss (overfitting)
+- ⚠️ "📈 Increasing" trends for multiple evaluations
+- ⚠️ No improvement for several evaluations
+
+## Usage in Training Pipeline
+
+### Integration Points
+1. **Dataset loading**: Automatic train/eval split in `load_dataset()`
+2. **Trainer creation**: Callback registration in `create_trainer()`
+3. **Training execution**: Real-time monitoring during `train()`
+4. **Post-training**: Summary generation in `save_evaluation_summary()`
+
+### Monitoring Workflow
+1. Training starts with initial evaluation
+2. Every 25 steps: automatic evaluation and logging
+3. Best models automatically saved
+4. Trends calculated and displayed
+5. Final summary with improvement analysis
+
+## Advanced Features
+
+### Custom Metrics
+The callback tracks:
+- **Evaluation loss**: Primary metric for model quality
+- **Training loss**: For overfitting detection
+- **Learning rate**: For optimization monitoring
+- **Step count**: For progress tracking
+
+### Trend Analysis
+Calculates improvement over last 3 evaluations:
+- **Improving**: Recent eval loss decreasing
+- **Increasing**: Recent eval loss increasing  
+- **Stable**: Recent eval loss relatively unchanged
+
+This system provides professional-grade monitoring comparable to what major AI labs use for training oversight.

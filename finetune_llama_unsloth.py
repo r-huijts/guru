@@ -31,6 +31,57 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+class SpiritualWisdomEvaluationCallback:
+    """Custom callback for detailed evaluation monitoring during training."""
+    
+    def __init__(self):
+        self.best_eval_loss = float('inf')
+        self.eval_history = []
+    
+    def on_evaluate(self, args, state, control, model, tokenizer, eval_dataloader, **kwargs):
+        """Called after each evaluation step."""
+        if hasattr(state, 'log_history') and state.log_history:
+            latest_log = state.log_history[-1]
+            
+            if 'eval_loss' in latest_log:
+                eval_loss = latest_log['eval_loss']
+                step = latest_log.get('step', state.global_step)
+                
+                # Track evaluation history
+                self.eval_history.append({
+                    'step': step,
+                    'eval_loss': eval_loss,
+                    'train_loss': latest_log.get('loss', None),
+                    'learning_rate': latest_log.get('learning_rate', None)
+                })
+                
+                # Check if this is the best model so far
+                if eval_loss < self.best_eval_loss:
+                    self.best_eval_loss = eval_loss
+                    improvement = "🎉 NEW BEST!"
+                else:
+                    improvement = f"(best: {self.best_eval_loss:.4f})"
+                
+                logger.info(f"📊 Step {step} Evaluation:")
+                logger.info(f"   🧘‍♂️ Eval Loss: {eval_loss:.4f} {improvement}")
+                if latest_log.get('loss'):
+                    logger.info(f"   📈 Train Loss: {latest_log['loss']:.4f}")
+                if latest_log.get('learning_rate'):
+                    logger.info(f"   🎓 Learning Rate: {latest_log['learning_rate']:.2e}")
+                
+                # Calculate improvement trend
+                if len(self.eval_history) >= 3:
+                    recent_losses = [h['eval_loss'] for h in self.eval_history[-3:]]
+                    if recent_losses[-1] < recent_losses[0]:
+                        trend = "📉 Improving"
+                    elif recent_losses[-1] > recent_losses[0]:
+                        trend = "📈 Increasing"
+                    else:
+                        trend = "➡️ Stable"
+                    logger.info(f"   📊 Trend: {trend}")
+
+
 class SpiritualWisdomTrainer:
     """
     Spiritual Wisdom Fine-tuning Pipeline using Unsloth + Llama 3.2
@@ -46,12 +97,14 @@ class SpiritualWisdomTrainer:
                  model_name: str = "unsloth/Llama-3.2-3B-Instruct",
                  dataset_path: str = "datasets/llama_optimized.jsonl",
                  output_dir: str = "models/spiritual-wisdom-llama",
-                 max_seq_length: int = 2048):
+                 max_seq_length: int = 2048,
+                 enable_early_stopping: bool = False):
         
         self.model_name = model_name
         self.dataset_path = Path(dataset_path)
         self.output_dir = Path(output_dir)
         self.max_seq_length = max_seq_length
+        self.enable_early_stopping = enable_early_stopping
         
         # Create output directory
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -65,6 +118,8 @@ class SpiritualWisdomTrainer:
         logger.info(f"📱 Model: {self.model_name}")
         logger.info(f"📊 Dataset: {self.dataset_path}")
         logger.info(f"💾 Output: {self.output_dir}")
+        if self.enable_early_stopping:
+            logger.info(f"⏰ Early stopping: Enabled")
     
     def check_requirements(self):
         """Verify system requirements and dependencies."""
@@ -112,6 +167,25 @@ class SpiritualWisdomTrainer:
             
             logger.info("✅ Unsloth-optimized model loaded successfully")
             self.using_unsloth = True
+            
+            # Add LoRA adapters using Unsloth's method
+            self.model = FastLanguageModel.get_peft_model(
+                self.model,
+                r=16,  # LoRA rank
+                target_modules=[
+                    "q_proj", "k_proj", "v_proj", "o_proj",
+                    "gate_proj", "up_proj", "down_proj"
+                ],
+                lora_alpha=16,
+                lora_dropout=0.05,
+                bias="none",
+                use_gradient_checkpointing="unsloth",  # Unsloth's optimized checkpointing
+                random_state=3407,
+                use_rslora=False,  # Rank stabilized LoRA
+                loftq_config=None,  # LoftQ quantization
+            )
+            
+            logger.info("✅ LoRA adapters added successfully")
             
         except ImportError:
             logger.warning("⚠️  Unsloth not available, falling back to standard transformers")
@@ -170,6 +244,7 @@ class SpiritualWisdomTrainer:
         
         logger.info(f"📊 Total parameters: {total_params:,}")
         logger.info(f"🎯 Trainable parameters: {trainable_params:,}")
+        logger.info(f"📈 Trainable ratio: {100 * trainable_params / total_params:.2f}%")
         
         # Add using_unsloth flag for later use
         if not hasattr(self, 'using_unsloth'):
@@ -180,8 +255,8 @@ class SpiritualWisdomTrainer:
         logger.info("🔧 Setting up LoRA configuration...")
         
         if self.using_unsloth:
-            # Unsloth handles LoRA automatically
-            logger.info("✅ LoRA configuration handled by Unsloth")
+            # LoRA adapters already added during model loading for Unsloth
+            logger.info("✅ LoRA configuration already handled during Unsloth model loading")
             return
         
         try:
@@ -255,9 +330,16 @@ class SpiritualWisdomTrainer:
             
             # Convert to Hugging Face dataset
             from datasets import Dataset
-            self.dataset = Dataset.from_list(formatted_data)
+            full_dataset = Dataset.from_list(formatted_data)
             
-            logger.info("✅ Dataset formatted and ready for training")
+            # Split into train/eval (90/10 split)
+            dataset_split = full_dataset.train_test_split(test_size=0.1, seed=42)
+            self.train_dataset = dataset_split['train']
+            self.eval_dataset = dataset_split['test']
+            
+            logger.info(f"✅ Dataset split completed:")
+            logger.info(f"   🎓 Training examples: {len(self.train_dataset)}")
+            logger.info(f"   📊 Evaluation examples: {len(self.eval_dataset)}")
             
             # Show sample
             logger.info("📝 Sample formatted example:")
@@ -274,24 +356,28 @@ class SpiritualWisdomTrainer:
         from transformers import TrainingArguments
         
         # Calculate steps based on dataset size
-        dataset_size = len(self.dataset)
+        train_dataset_size = len(self.train_dataset)
         batch_size = 2
         gradient_accumulation_steps = 4
         effective_batch_size = batch_size * gradient_accumulation_steps
         
         # Target ~3 epochs
-        max_steps = (dataset_size * 3) // effective_batch_size
+        max_steps = (train_dataset_size * 3) // effective_batch_size
+        
+        # Evaluation steps (every 25 training steps)
+        eval_steps = 25
         
         self.training_args = TrainingArguments(
             # Output and logging
             output_dir=str(self.output_dir),
             logging_dir=str(self.output_dir / "logs"),
             logging_steps=25,
-            save_steps=100,
-            save_total_limit=3,
+            save_steps=50,  # Save more frequently for better checkpointing
+            save_total_limit=5,  # Keep more checkpoints
             
             # Training parameters
             per_device_train_batch_size=batch_size,
+            per_device_eval_batch_size=batch_size,  # Same batch size for eval
             gradient_accumulation_steps=gradient_accumulation_steps,
             max_steps=max_steps,
             warmup_steps=50,
@@ -303,14 +389,25 @@ class SpiritualWisdomTrainer:
             lr_scheduler_type="linear",
             
             # Memory and precision
-            fp16=True,  # Memory optimization
+            fp16=False,
+            bf16=True,  # Memory optimization
             gradient_checkpointing=True,
             dataloader_pin_memory=False,
             
-            # Evaluation and saving
-            eval_strategy="no",  # Changed from evaluation_strategy
+            # Evaluation configuration
+            eval_strategy="steps",  # Evaluate every N steps
+            eval_steps=eval_steps,  # Evaluate every 25 steps
+            eval_accumulation_steps=1,  # Don't accumulate eval gradients
+            eval_delay=0,  # Start evaluating immediately
+            
+            # Saving and loading
             save_strategy="steps",
-            load_best_model_at_end=False,
+            load_best_model_at_end=True,  # Load best model based on eval loss
+            metric_for_best_model="eval_loss",  # Use eval loss as metric
+            greater_is_better=False,  # Lower eval loss is better
+            
+            # Early stopping (optional)
+            # early_stopping_patience=3,  # Stop if no improvement for 3 evals
             
             # Reproducibility
             seed=42,
@@ -319,12 +416,18 @@ class SpiritualWisdomTrainer:
             # Reporting
             report_to=None,  # Disable wandb/tensorboard for now
             run_name=f"spiritual-wisdom-{datetime.now().strftime('%Y%m%d-%H%M%S')}",
+            
+            # Additional monitoring
+            include_inputs_for_metrics=False,  # Don't include inputs in metrics (saves memory)
+            prediction_loss_only=True,  # Only compute loss for evaluation
         )
         
         logger.info(f"🎯 Training configuration:")
-        logger.info(f"   📊 Dataset size: {dataset_size}")
+        logger.info(f"   📊 Train dataset size: {train_dataset_size}")
+        logger.info(f"   📊 Eval dataset size: {len(self.eval_dataset)}")
         logger.info(f"   🔢 Effective batch size: {effective_batch_size}")
         logger.info(f"   📈 Max steps: {max_steps}")
+        logger.info(f"   📊 Eval every: {eval_steps} steps")
         logger.info(f"   🎓 Learning rate: {self.training_args.learning_rate}")
         logger.info(f"   💾 Save every: {self.training_args.save_steps} steps")
     
@@ -334,19 +437,38 @@ class SpiritualWisdomTrainer:
         
         try:
             from trl import SFTTrainer
+            from transformers import EarlyStoppingCallback
+            
+            # Create callbacks for better monitoring
+            callbacks = []
+            
+            # Add our custom evaluation callback
+            self.eval_callback = SpiritualWisdomEvaluationCallback()
+            callbacks.append(self.eval_callback)
+            
+            # Add early stopping callback if enabled
+            if self.enable_early_stopping:
+                early_stopping = EarlyStoppingCallback(early_stopping_patience=3)
+                callbacks.append(early_stopping)
+                logger.info("⏰ Early stopping enabled (patience: 3 evaluations)")
             
             self.trainer = SFTTrainer(
                 model=self.model,
                 tokenizer=self.tokenizer,
-                train_dataset=self.dataset,
+                train_dataset=self.train_dataset,
+                eval_dataset=self.eval_dataset,  # Add evaluation dataset
                 dataset_text_field="text",
                 max_seq_length=self.max_seq_length,
                 dataset_num_proc=2,
                 args=self.training_args,
                 packing=False,  # Don't pack sequences for better quality
+                callbacks=callbacks,  # Add monitoring callbacks
             )
             
             logger.info("✅ SFT trainer created successfully")
+            logger.info("📊 Evaluation will run every 25 training steps")
+            logger.info("💾 Best model will be saved based on evaluation loss")
+            logger.info("🔍 Custom evaluation monitoring enabled")
             
         except ImportError:
             logger.error("❌ TRL not installed. Run: pip install trl")
@@ -354,6 +476,48 @@ class SpiritualWisdomTrainer:
         except Exception as e:
             logger.error(f"❌ Failed to create trainer: {e}")
             raise
+    
+    def save_evaluation_summary(self):
+        """Save evaluation metrics and create a training summary."""
+        logger.info("📊 Creating evaluation summary...")
+        
+        try:
+            # Save evaluation history
+            eval_summary = {
+                'best_eval_loss': self.eval_callback.best_eval_loss,
+                'total_evaluations': len(self.eval_callback.eval_history),
+                'evaluation_history': self.eval_callback.eval_history,
+                'final_metrics': self.eval_callback.eval_history[-1] if self.eval_callback.eval_history else None
+            }
+            
+            # Save to JSON file
+            summary_path = self.output_dir / "evaluation_summary.json"
+            with open(summary_path, 'w') as f:
+                json.dump(eval_summary, f, indent=2)
+            
+            logger.info(f"💾 Evaluation summary saved to: {summary_path}")
+            
+            # Print summary
+            if self.eval_callback.eval_history:
+                first_eval = self.eval_callback.eval_history[0]
+                last_eval = self.eval_callback.eval_history[-1]
+                improvement = first_eval['eval_loss'] - last_eval['eval_loss']
+                improvement_pct = (improvement / first_eval['eval_loss']) * 100
+                
+                logger.info("📈 Training Evaluation Summary:")
+                logger.info(f"   🎯 Best Eval Loss: {self.eval_callback.best_eval_loss:.4f}")
+                logger.info(f"   📊 Total Evaluations: {len(self.eval_callback.eval_history)}")
+                logger.info(f"   📉 Loss Improvement: {improvement:.4f} ({improvement_pct:.1f}%)")
+                logger.info(f"   🏁 Final Eval Loss: {last_eval['eval_loss']:.4f}")
+                
+                # Check if model improved
+                if improvement > 0:
+                    logger.info("✅ Model showed improvement during training!")
+                else:
+                    logger.warning("⚠️  Model may need more training or different hyperparameters")
+            
+        except Exception as e:
+            logger.warning(f"⚠️  Could not create evaluation summary: {e}")
     
     def train(self):
         """Execute the fine-tuning process."""
@@ -371,6 +535,9 @@ class SpiritualWisdomTrainer:
             
             logger.info(f"✅ Training completed successfully!")
             logger.info(f"⏱️  Training duration: {training_duration}")
+            
+            # Save evaluation summary
+            self.save_evaluation_summary()
             
             # Save final model
             logger.info("💾 Saving final model...")
@@ -416,26 +583,36 @@ class SpiritualWisdomTrainer:
                 max_length=self.max_seq_length
             ).to(self.model.device)
             
-            # Generate response
+            # Generate response with improved parameters
             with torch.no_grad():
                 outputs = self.model.generate(
                     **inputs,
-                    max_new_tokens=256,
-                    temperature=0.7,
+                    max_new_tokens=150,  # Reduced for more focused responses
+                    temperature=0.8,     # Slightly higher for creativity
+                    top_p=0.9,          # Nucleus sampling for better quality
+                    top_k=50,           # Limit vocabulary for coherence
                     do_sample=True,
-                    pad_token_id=self.tokenizer.eos_token_id
+                    repetition_penalty=1.1,  # Reduce repetition
+                    pad_token_id=self.tokenizer.eos_token_id,
+                    eos_token_id=self.tokenizer.eos_token_id
                 )
             
             # Decode response
-            response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+            full_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
             
             # Extract just the assistant's response
-            if "<|start_header_id|>assistant<|end_header_id|>" in response:
-                response = response.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
+            if "<|start_header_id|>assistant<|end_header_id|>" in full_response:
+                response = full_response.split("<|start_header_id|>assistant<|end_header_id|>")[-1]
                 response = response.replace("<|eot_id|>", "").strip()
+                
+                # Clean up any remaining artifacts
+                if response.startswith("user"):
+                    response = response.split("assistant", 1)[-1].strip()
+            else:
+                response = full_response
             
             logger.info(f"\n❓ Question: {prompt}")
-            logger.info(f"🧘‍♂️ Response: {response[:200]}...")
+            logger.info(f"🧘‍♂️ Response: {response}")
             logger.info("-" * 50)
     
     def run_full_pipeline(self):
@@ -513,6 +690,12 @@ def main():
         help="Only run model testing (requires existing model)"
     )
     
+    parser.add_argument(
+        "--early-stopping", 
+        action="store_true",
+        help="Enable early stopping"
+    )
+    
     args = parser.parse_args()
     
     # Create trainer instance
@@ -520,7 +703,8 @@ def main():
         model_name=args.model,
         dataset_path=args.dataset,
         output_dir=args.output,
-        max_seq_length=args.max_length
+        max_seq_length=args.max_length,
+        enable_early_stopping=args.early_stopping
     )
     
     if args.test_only:
